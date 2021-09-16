@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     List<Vector3> moleHoles;
     [SerializeField]
     private Mole molePrefab;
+    private float spawnRate;
 
     private bool spawning;
 
@@ -27,22 +28,14 @@ public class Level : MonoBehaviour
         StartCoroutine("SpawnMoles");
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator SpawnMoles()
     {
         while (spawning)
         {
+            spawnRate = Random.Range(0.0f, 3.0f);
             int molePosition = Random.Range(0, 5);
             Instantiate(molePrefab, moleHoles[molePosition], transform.rotation);
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(spawnRate);
         }
     }
-
-    
 }

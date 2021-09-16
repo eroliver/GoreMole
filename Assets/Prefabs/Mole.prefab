@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 101959853780667738}
   - component: {fileID: 101959853780667739}
+  - component: {fileID: 538042965464413840}
   m_Layer: 0
   m_Name: Mole
   m_TagString: Untagged
@@ -44,7 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b138c208fc48544aa8c37bbe6dcc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpPercent: 1
+  moleSpeed: 4
+--- !u!136 &538042965464413840
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101959853780668068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &101959854260839564
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +71,6 @@ GameObject:
   - component: {fileID: 101959854260839555}
   - component: {fileID: 101959854260839552}
   - component: {fileID: 101959854260839553}
-  - component: {fileID: 101959854260839554}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -127,17 +141,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &101959854260839554
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 101959854260839564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
