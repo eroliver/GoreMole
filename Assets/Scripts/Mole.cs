@@ -64,5 +64,10 @@ public class Mole : MonoBehaviour
             popped = true;
             
         }
+
+        if(popped && molePosition.position.y < -0.98f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

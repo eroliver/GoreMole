@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f))
             {
-                hit.transform.gameObject.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
+                hit.transform.parent.gameObject.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
             }
         }
         
