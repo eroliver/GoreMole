@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField]
     private Camera camera;
     private RaycastHit hit;
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        if (camera == null)
+        {
+            camera = Camera.main;
+        }
     }
 
     // Update is called once per frame

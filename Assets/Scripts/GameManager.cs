@@ -1,21 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int score;
+
+    
+    public static GameManager gameManager;
+
+    private void Awake()
     {
-        
+        MakeSingleton();
+        Mole.OnHit += addScore;
+        score = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    void MakeSingleton()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (gameManager != null)
         {
-            Application.Quit();
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameManager = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
+
+    public event Action onNextSceneEnter;
+    public void NextSceneEnter()
+    {
+        onNextSceneEnter?.Invoke();
+    }
+
+    public event Action onExitEnter;
+    public void ExitEnter()
+    {
+        onExitEnter?.Invoke();
+    }
+
+
+    public event Action onScoreGoal;
+    public void ScoreGoal(int teamNumber)
+    {
+        onScoreGoal?.Invoke();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            NextSceneEnter();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitEnter();
+        }
+    }
+
+    void addScore(int points)
+    {
+        score += points;
+        Debug.Log(score);
+    }
+
 }

@@ -12,10 +12,14 @@ public class Mole : MonoBehaviour
     //private Vector3 endPosition;
     private Vector3 molePop;
     private bool popped;
+    private int points;
 
     //[SerializeField]
     //[Range(0f, 1f)]
     //private float lerpPercent;
+
+    public delegate void HitAction(int points);
+    public static event HitAction OnHit;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,7 @@ public class Mole : MonoBehaviour
         //moleSpeed = 1.5f;
         molePop = new Vector3(molePosition.position.x, (molePosition.position.y + 2), molePosition.position.z);
         popped = false;
+        points = 2;
     }
 
     // Update is called once per frame
@@ -39,6 +44,7 @@ public class Mole : MonoBehaviour
     public void Hit()
     {
         gameObject.SetActive(false);
+        OnHit(points);
     }
 
     private void PopUp()
