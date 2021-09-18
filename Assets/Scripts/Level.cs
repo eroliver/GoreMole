@@ -7,8 +7,9 @@ public class Level : MonoBehaviour
     [SerializeField]
     List<Vector3> moleHoles;
     [SerializeField]
-    private Mole molePrefab;
+    private List<Mole> molePrefabs;
     private float spawnRate;
+    private int moleSelection;
 
     private bool spawning;
 
@@ -33,8 +34,10 @@ public class Level : MonoBehaviour
         while (spawning)
         {
             spawnRate = Random.Range(0.0f, 3.0f);
+            //make ranges based on size of the lists, or tied to variable deciding difficulty
             int molePosition = Random.Range(0, 5);
-            Instantiate(molePrefab, moleHoles[molePosition], transform.rotation);
+            int moleSelection = Random.Range(0, 2);
+            Instantiate(molePrefabs[moleSelection], moleHoles[molePosition], transform.rotation);
             yield return new WaitForSeconds(spawnRate);
         }
     }

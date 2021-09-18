@@ -12,6 +12,7 @@ public class Mole : MonoBehaviour
     //private Vector3 endPosition;
     private Vector3 molePop;
     private bool popped;
+    [SerializeField]
     private int points;
 
     //[SerializeField]
@@ -30,7 +31,7 @@ public class Mole : MonoBehaviour
         //moleSpeed = 1.5f;
         molePop = new Vector3(molePosition.position.x, (molePosition.position.y + 2), molePosition.position.z);
         popped = false;
-        points = 2;
+        //points = 2;
     }
 
     // Update is called once per frame

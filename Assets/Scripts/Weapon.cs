@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private Camera camera;
     private RaycastHit hit;
+    private Vector3 mousePosition;
+    private Transform weaponTransform;
+    private Animator hammerAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -15,18 +18,28 @@ public class Weapon : MonoBehaviour
         {
             camera = Camera.main;
         }
+        weaponTransform = transform;
+        hammerAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        mousePosition = Input.mousePosition;
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 100f))
+        {
+            transform.position = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            
+        }
         //refector to accept the current weapon position once weapon follows the mouse.
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100f))
             {
+                hammerAnimator.SetTrigger("Swing");
                 hit.transform.parent.gameObject.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
+
             }
         }
         
