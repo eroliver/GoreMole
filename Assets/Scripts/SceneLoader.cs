@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private GameObject menu;
 
     private void Start()
     {
         GameManager.gameManager.onNextSceneEnter += LoadNextScene;
+        GameManager.gameManager.onRestartGame += LoadStartScene;
         GameManager.gameManager.onExitEnter += QuitGame;
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
         //menu = this.transform.GetChild(0).gameObject;
     }
 
@@ -24,26 +23,11 @@ public class SceneLoader : MonoBehaviour
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
         GameManager.gameManager.onNextSceneEnter -= LoadNextScene;
         GameManager.gameManager.onExitEnter -= QuitGame;
     }
 
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-    {
-        if (menu != null)
-        {
-            if (scene.name == "MainMenu")
-            {
-                menu.SetActive(true);
-            }
-            else
-            {
-                menu.SetActive(false);
-            }
-        }
-
-    }
+    
 
     #endregion
 
@@ -72,19 +56,4 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
 
-
-    private void EndGame(int unithealth, GameObject spawner)
-    {
-        if (spawner.name == "Spawner" && unithealth <= 0)
-        {
-            Debug.Log("You Lose.");
-            LoadStartScene();
-        }
-        else if (spawner.name == "AISpawner" && unithealth <= 0)
-        {
-            Debug.Log("You win.");
-            LoadStartScene();
-
-        }
-    }
 }

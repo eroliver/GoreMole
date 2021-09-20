@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    
+
     [SerializeField]
     List<Vector3> moleHoles;
     [SerializeField]
     private List<Mole> molePrefabs;
+
     private float spawnRate;
     private int moleSelection;
 
@@ -16,6 +19,7 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         spawning = true;
         moleHoles = new List<Vector3>()
         {
@@ -41,4 +45,5 @@ public class Level : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
     }
+
 }
