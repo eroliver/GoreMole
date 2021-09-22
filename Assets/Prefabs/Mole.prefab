@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moleSpeed: 5
-  goreParticles: {fileID: 5531231052371847854, guid: 476ccf6c3dda6664397ce7aeab989c4c, type: 3}
+  goreParticles: {fileID: 6934896596664521067, guid: 17c3d4906a6680d4d8cc502774131d5c, type: 3}
   points: 2
 --- !u!136 &1880132100931815916
 CapsuleCollider:

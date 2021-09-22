@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
         Mole.OnHit += addScore;
         level = SceneManager.GetActiveScene().buildIndex;
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-
     }
 
     private void OnDisable()
@@ -127,7 +126,6 @@ public class GameManager : MonoBehaviour
     void addScore(int points)
     {
         score += points;
-        Debug.Log(score);
     }
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
