@@ -31,6 +31,7 @@ Transform:
   - {fileID: 1132347370469593299}
   - {fileID: 5450176618891015409}
   - {fileID: 6558821386089924926}
+  - {fileID: 5973618881279204571}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moleSpeed: 5
   goreParticles: {fileID: 6934896596664521067, guid: 309b9b40435a3f64e8b0841d1d18bb18, type: 3}
+  goreLauncher: {fileID: 5973618881697116758}
   points: 3
 --- !u!136 &1880132100931815916
 CapsuleCollider:
@@ -292,3 +294,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a502da8dede59c49adddd8699f24a13, type: 3}
   m_PrefabInstance: {fileID: 6669589368474005205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7818814114449263242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 101959853780667738}
+    m_Modifications:
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.3587284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495873066881619538, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+      propertyPath: m_Name
+      value: GoreLauncherParent
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+--- !u!4 &5973618881279204571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4495873066881619537, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+  m_PrefabInstance: {fileID: 7818814114449263242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5973618881697116758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4495873066224613596, guid: 94cc91598a699f44b9430319b40b7b95, type: 3}
+  m_PrefabInstance: {fileID: 7818814114449263242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c08eeae3adfd14a9369fd0d09bdad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
