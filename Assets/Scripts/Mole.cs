@@ -8,6 +8,8 @@ public class Mole : MonoBehaviour
     private float moleSpeed;
     [SerializeField]
     private GameObject goreParticles;
+    [SerializeField]
+    private ParticleLauncher goreLauncher;
 
     private Transform molePosition;
     private Vector3 startPosition;
@@ -34,9 +36,11 @@ public class Mole : MonoBehaviour
 
     public void Hit()
     {
-        Instantiate(goreParticles, this.transform.position, Quaternion.identity);
+        //Instantiate(goreParticles, this.transform.position, Quaternion.identity);
 
-        gameObject.SetActive(false);
+        goreLauncher.LaunchGore();
+
+        //gameObject.SetActive(false);
         OnHit(points);
     }
 
