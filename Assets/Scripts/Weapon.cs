@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     private Vector3 mousePosition;
     private Transform weaponTransform;
     private Animator hammerAnimator;
+    private CameraShake cameraShaker;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Weapon : MonoBehaviour
         }
         weaponTransform = transform;
         hammerAnimator = GetComponentInChildren<Animator>();
+        cameraShaker = camera.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -38,8 +40,8 @@ public class Weapon : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100f))
             {
                 hammerAnimator.SetTrigger("Swing");
-                hit.transform.parent.gameObject.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
-
+                hit.transform.parent.SendMessage("Hit", SendMessageOptions.DontRequireReceiver);
+                cameraShaker.ShakeCamera();
             }
         }
         

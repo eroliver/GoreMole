@@ -7,10 +7,13 @@ public class Mole : MonoBehaviour
     [SerializeField]
     private float moleSpeed;
     [SerializeField]
-    private GameObject goreParticles;
+    private List<GameObject> droppableParts;
     [SerializeField]
     private ParticleLauncher goreLauncher;
+    [SerializeField]
+    private GameObject moleMesh;
 
+    private Vector3 droppableSpeed;
     private Transform molePosition;
     private Vector3 startPosition;
     private Vector3 molePop;
@@ -23,9 +26,10 @@ public class Mole : MonoBehaviour
 
     void Start()
     {
+        
         molePosition = this.transform;
         startPosition = gameObject.GetComponentInParent<Transform>().position;
-        molePop = new Vector3(molePosition.position.x, (molePosition.position.y + 2), molePosition.position.z);
+        molePop = new Vector3(molePosition.position.x, (molePosition.position.y + 3), molePosition.position.z);
         popped = false;
     }
 
@@ -36,11 +40,21 @@ public class Mole : MonoBehaviour
 
     public void Hit()
     {
+        for (int i = 0; i < droppableParts.Count; i++)
+        {
+            droppableSpeed = new Vector3(Random.Range(-30, 30), Random.Range(-30, 30), Random.Range(-30, 30));
+            GameObject dropped = Instantiate(droppableParts[i], this.transform.position, Quaternion.identity);
+            dropped.GetComponent<Rigidbody>().velocity = droppableSpeed;
+        }
+
         //Instantiate(goreParticles, this.transform.position, Quaternion.identity);
 
         goreLauncher.LaunchGore();
 
         //gameObject.SetActive(false);
+        moleMesh.SetActive(false);
+
+
         OnHit(points);
     }
 
@@ -56,7 +70,7 @@ public class Mole : MonoBehaviour
             molePosition.position = Vector3.MoveTowards(molePosition.position, startPosition, step);
         }
 
-        if (molePosition.position.y > 0.95f)
+        if (molePosition.position.y > 1.5f)
         {
             popped = true;
             
@@ -64,7 +78,7 @@ public class Mole : MonoBehaviour
 
         if(popped && molePosition.position.y < -0.98f)
         {
-            gameObject.SetActive(false);
+            moleMesh.SetActive(false);
         }
     }
 }

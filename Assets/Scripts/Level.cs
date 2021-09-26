@@ -37,10 +37,10 @@ public class Level : MonoBehaviour
     {
         while (spawning)
         {
-            spawnRate = Random.Range(0.0f, 3.0f);
+            spawnRate = Random.Range(0.0f, 2.2f);
             //make ranges based on size of the lists, or tied to variable deciding difficulty
             int molePosition = Random.Range(0, 5);
-            int moleSelection = Random.Range(0, 2);
+            int moleSelection = Random.Range(0, molePrefabs.Count);
             Instantiate(molePrefabs[moleSelection], moleHoles[molePosition], transform.rotation);
             yield return new WaitForSeconds(spawnRate);
         }

@@ -10,6 +10,8 @@ public class ParticleLauncher : MonoBehaviour
     public Gradient particleColorGradient;
     public ParticleDecalPool splatDecalPool;
 
+    //private bool isBleeding = false;
+
     List<ParticleCollisionEvent> collisionEvents;
 
     void Start()
@@ -54,6 +56,18 @@ public class ParticleLauncher : MonoBehaviour
     {
         ParticleSystem.MainModule psMain = particleLauncher.main;
         psMain.startColor = particleColorGradient.Evaluate(Random.Range(0f, 1f));
-        particleLauncher.Emit(30);
+        particleLauncher.Emit(75);
+        StartCoroutine(SprayBlood());
+    }
+
+    IEnumerator SprayBlood()
+    {
+        //isBleeding = true;
+        particleLauncher.Emit(75);
+        yield return new WaitForSeconds(0.1f);
+        particleLauncher.Emit(50);
+        yield return new WaitForSeconds(0.1f);
+        particleLauncher.Emit(50);
+        //isBleeding = false;
     }
 }
