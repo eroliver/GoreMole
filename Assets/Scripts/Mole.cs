@@ -21,6 +21,8 @@ public class Mole : MonoBehaviour
     [SerializeField]
     private int points;
 
+    private AudioManager audioManager;
+
     public delegate void HitAction(int points);
     public static event HitAction OnHit;
 
@@ -31,6 +33,9 @@ public class Mole : MonoBehaviour
         startPosition = gameObject.GetComponentInParent<Transform>().position;
         molePop = new Vector3(molePosition.position.x, (molePosition.position.y + 3), molePosition.position.z);
         popped = false;
+
+        audioManager = FindObjectOfType<AudioManager>();
+
     }
 
     void Update()
@@ -42,6 +47,7 @@ public class Mole : MonoBehaviour
     {
         for (int i = 0; i < droppableParts.Count; i++)
         {
+            audioManager.Play("phittphitt");
             droppableSpeed = new Vector3(Random.Range(-30, 30), Random.Range(-30, 30), Random.Range(-30, 30));
             GameObject dropped = Instantiate(droppableParts[i], this.transform.position, Quaternion.identity);
             dropped.GetComponent<Rigidbody>().velocity = droppableSpeed;

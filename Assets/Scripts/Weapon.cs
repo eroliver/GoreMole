@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
     private Animator hammerAnimator;
     private CameraShake cameraShaker;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,8 @@ public class Weapon : MonoBehaviour
         weaponTransform = transform;
         hammerAnimator = GetComponentInChildren<Animator>();
         cameraShaker = camera.GetComponent<CameraShake>();
+
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -37,6 +41,9 @@ public class Weapon : MonoBehaviour
         //refector to accept the current weapon position once weapon follows the mouse.
         if (Input.GetMouseButtonDown(0))
         {
+            //audioManager.Play("hammerSwing");
+            audioManager.Play("banjoOutaTune");
+
             if (Physics.Raycast(ray, out hit, 100f))
             {
                 hammerAnimator.SetTrigger("Swing");
