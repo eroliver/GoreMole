@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float timeLimit;
 
+    private AudioManager audioManager;
 
     public static GameManager gameManager;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         Mole.OnHit += addScore;
         level = SceneManager.GetActiveScene().buildIndex;
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void OnDisable()
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
                 timeLimit -= Time.deltaTime;
                 BeatHighScore();
                 OnTimedOut(timeLimit, score, highScore);
+                audioManager.PlayBGSound();
             }
             else
             {

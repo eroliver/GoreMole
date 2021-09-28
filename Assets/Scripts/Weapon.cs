@@ -41,8 +41,7 @@ public class Weapon : MonoBehaviour
         //refector to accept the current weapon position once weapon follows the mouse.
         if (Input.GetMouseButtonDown(0))
         {
-            //audioManager.Play("hammerSwing");
-            audioManager.Play("banjoOutaTune");
+            audioManager.Play("hammerSwing");
 
             if (Physics.Raycast(ray, out hit, 100f))
             {

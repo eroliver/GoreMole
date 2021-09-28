@@ -54,4 +54,9 @@ public class AudioManager : MonoBehaviour
         }
         sound.source.Play();
     }
+
+    public void PlayBGSound()
+    {
+        BackgroundSoundManager.playing = true;
+    }
 }
