@@ -82,7 +82,7 @@ public class Mole : MonoBehaviour
             
         }
 
-        if(popped && molePosition.position.y < -0.98f)
+        if(popped && molePosition.position.y < -0.95f)
         {
             moleMesh.SetActive(false);
         }
