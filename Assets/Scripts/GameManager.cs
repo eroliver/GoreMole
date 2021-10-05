@@ -137,4 +137,9 @@ public class GameManager : MonoBehaviour
         timeLimit = 30;
         score = 0;
     }
+
+    public void startSelectedScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
 }
