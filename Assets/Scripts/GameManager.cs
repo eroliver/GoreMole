@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 BeatHighScore();
-                RestartGame();
+                startSelectedScene(0);
             }
         }
         else

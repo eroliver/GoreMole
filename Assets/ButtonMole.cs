@@ -22,6 +22,5 @@ public class ButtonMole : MonoBehaviour
     public void Hit()
     {
         GameManager.gameManager.startSelectedScene(sceneNumber);
-        FindObjectOfType<LoadingScreen>().LoadScene(sceneNumber);
     }
 }

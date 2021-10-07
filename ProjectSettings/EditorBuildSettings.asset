@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: 1e8b61f5f5a54504d87955ebe844d9d7
+  - enabled: 0
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 8a53154c374ce3d4083e3e3aa7a1d605
   - enabled: 1
     path: Assets/Scenes/MoleMenu.unity
     guid: 40af67e9bdfe6a5438bd4af34af6198d
