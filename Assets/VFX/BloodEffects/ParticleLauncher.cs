@@ -26,7 +26,7 @@ public class ParticleLauncher : MonoBehaviour
         for (int i = 0; i < collisionEvents.Count; i++)
         {
             splatDecalPool.ParticleHit(collisionEvents[i], particleColorGradient);
-            EmitAtLocation(collisionEvents[i]);
+            //EmitAtLocation(collisionEvents[i]);
         }
 
     }
