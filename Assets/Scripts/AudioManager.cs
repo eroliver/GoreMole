@@ -10,10 +10,14 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+    private BackgroundSoundManager bgSoundMgr;
+
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        bgSoundMgr = FindObjectOfType<BackgroundSoundManager>();
+
 
         if (instance ==null)
         {
@@ -55,8 +59,8 @@ public class AudioManager : MonoBehaviour
         sound.source.Play();
     }
 
-    public void PlayBGSound()
+    public void PlayBGSound(bool maybe)
     {
-        BackgroundSoundManager.playing = true;
+        bgSoundMgr.PlaySound(maybe);
     }
 }
