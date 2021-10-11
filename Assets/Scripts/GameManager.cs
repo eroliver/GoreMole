@@ -85,14 +85,12 @@ public class GameManager : MonoBehaviour
                 timeLimit -= Time.deltaTime;
                 BeatHighScore();
                 OnTimedOut(timeLimit, score, highScore);
-                audioManager.PlayBGSound(true);
                 
             }
             else
             {
                 BeatHighScore();
                 startSelectedScene(0);
-                audioManager.PlayBGSound(false);
 
             }
         }
@@ -139,6 +137,15 @@ public class GameManager : MonoBehaviour
         level = scene.buildIndex;
         timeLimit = 30;
         score = 0;
+        if (level != 0)
+        {
+            audioManager.PlayBGSound(true);
+        }
+        else
+        {
+            audioManager.PlayBGSound(false);
+
+        }
     }
 
     public void startSelectedScene(int scene)

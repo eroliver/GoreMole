@@ -5,7 +5,6 @@ using UnityEngine;
 public class BackgroundSoundManager : MonoBehaviour
 {
     
-    [SerializeField]
     private float timeBetweenSounds;
     [SerializeField]
     public bool playing = false;
@@ -18,7 +17,6 @@ public class BackgroundSoundManager : MonoBehaviour
     {
         bgSounds = new List<string>()
         {
-            "banjoOutaTune",
             "yeeYee",
             "hoooey",
             "youSuck",
@@ -27,7 +25,6 @@ public class BackgroundSoundManager : MonoBehaviour
             "laugh2"
         };
         audioManager = GetComponent<AudioManager>();
-        StartCoroutine(CycleSounds());
     }
 
     // Update is called once per frame
@@ -42,7 +39,8 @@ public class BackgroundSoundManager : MonoBehaviour
         {
             soundToPlay = bgSounds[Random.Range(0, bgSounds.Count)];
             audioManager.Play(soundToPlay);
-            timeBetweenSounds = Random.Range(0.0f, 2.2f);
+            Debug.Log("called from " + gameObject);
+            timeBetweenSounds = Random.Range(3f, 7f);
             yield return new WaitForSeconds(timeBetweenSounds);
         }
         
@@ -51,5 +49,15 @@ public class BackgroundSoundManager : MonoBehaviour
     public void PlaySound(bool maybe)
     {
         playing = maybe;
+        if (playing)
+        {
+            StartCoroutine(CycleSounds());
+
+        }
+        else
+        {
+            StopCoroutine(CycleSounds());
+        }
+
     }
 }
