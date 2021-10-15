@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     public delegate void TimeLimitReached(float time, int score, int highScore);
     public static event TimeLimitReached OnTimedOut;
 
+    //TODO refactor this garbage.
     private void TimeoutGame()
     {
         if (level != 0)
@@ -85,13 +86,12 @@ public class GameManager : MonoBehaviour
                 timeLimit -= Time.deltaTime;
                 BeatHighScore();
                 OnTimedOut(timeLimit, score, highScore);
-                
+
             }
             else
             {
                 BeatHighScore();
                 startSelectedScene(0);
-
             }
         }
         else
@@ -135,7 +135,15 @@ public class GameManager : MonoBehaviour
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         level = scene.buildIndex;
-        timeLimit = 30;
+        if (level != 4)
+        {
+            timeLimit = 30;
+        }
+        else
+        {
+            timeLimit = 300;
+        }
+        
         score = 0;
         if (level != 0)
         {

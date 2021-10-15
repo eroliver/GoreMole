@@ -5,8 +5,6 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     
-
-    [SerializeField]
     List<Vector3> moleHoles;
     [SerializeField]
     private List<Mole> molePrefabs;
@@ -18,11 +16,12 @@ public class Level : MonoBehaviour
     private int moleSelection;
     [SerializeField]
     private bool spawning;
+    private float spawnCheckRadius;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnCheckRadius = 0.2f;
 
         moleHoles = new List<Vector3>()
         {
@@ -49,7 +48,10 @@ public class Level : MonoBehaviour
             //make ranges based on size of the lists, or tied to variable deciding difficulty
             int molePosition = Random.Range(0, moleHoles.Count);
             int moleSelection = Random.Range(0, molePrefabs.Count);
-            Instantiate(molePrefabs[moleSelection], moleHoles[molePosition], transform.rotation);
+            if (!Physics.CheckSphere(moleHoles[molePosition], spawnCheckRadius))
+            {
+                Instantiate(molePrefabs[moleSelection], moleHoles[molePosition], transform.rotation);
+            }
             yield return new WaitForSeconds(spawnRate);
         }
     }
@@ -64,4 +66,6 @@ public class Level : MonoBehaviour
             }
         }
     }
+
+
 }
